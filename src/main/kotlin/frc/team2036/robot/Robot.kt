@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.XboxController
 import edu.wpi.first.wpilibj.drive.DifferentialDrive
 
 const val XBOX_CONTROLLER_PORT = 1
-const val LEFT_TALON_PORT = 2
-const val RIGHT_TALON_PORT = 3
+const val LEFT_TALON_PORT = 3
+const val RIGHT_TALON_PORT = 0
 
 /**
  * The main and only class for the DDR bot
