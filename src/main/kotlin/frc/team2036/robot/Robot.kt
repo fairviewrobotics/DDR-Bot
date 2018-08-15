@@ -16,9 +16,9 @@ const val RIGHT_TALON_PORT = 0
 const val MAX_ORTHOGONAL_SPEED = 0.75
 
 /**
- * An enumeration of directions on the DDR mat
+ * An enumeration of directions on the DDR mat along with the button on the DDR mat that corresponds to the direction
  */
-enum class Direction(val portNumber: Int) {
+enum class Direction(val buttonNumber: Int) {
     UP(16),
     DOWN(14),
     LEFT(13),
@@ -27,7 +27,7 @@ enum class Direction(val portNumber: Int) {
 
 /**
  * The main and only class for the DDR bot
- * Is an iterative robot which will have some of its methods periodically called
+ * Is a timed robot which will have some of its methods periodically called
  */
 class Robot : TimedRobot() {
 
@@ -55,16 +55,16 @@ class Robot : TimedRobot() {
         var x = 0.0
         var y = 0.0
         //Polls the DDR mat for the relevant buttons and adds to the x and y variables accordingly
-        if (this.controller.getRawButton(Direction.UP.portNumber)) {
+        if (this.controller.getRawButton(Direction.UP.buttonNumber)) {
             y += MAX_ORTHOGONAL_SPEED
         }
-        if (this.controller.getRawButton(Direction.DOWN.portNumber)) {
-            y += -MAX_ORTHOGONAL_SPEED
+        if (this.controller.getRawButton(Direction.DOWN.buttonNumber)) {
+            y -= MAX_ORTHOGONAL_SPEED
         }
-        if (this.controller.getRawButton(Direction.LEFT.portNumber)) {
-            x += -MAX_ORTHOGONAL_SPEED
+        if (this.controller.getRawButton(Direction.LEFT.buttonNumber)) {
+            x -= MAX_ORTHOGONAL_SPEED
         }
-        if (this.controller.getRawButton(Direction.RIGHT.portNumber)) {
+        if (this.controller.getRawButton(Direction.RIGHT.buttonNumber)) {
             x += MAX_ORTHOGONAL_SPEED
         }
         //Tells the drivetrain to drive with the given x and y speeds that were polled from the DDR mat
